@@ -1,0 +1,53 @@
+
+#./configure
+#cd tensorflow
+
+#https://github.com/tensorflow/tensorflow/issues/11891
+
+Build fails with carefully chosen configs:
+Please specify the location of python. [Default is /home/op/anaconda2/bin/python]:
+input the desired Python library path to use. Default is /home/op/anaconda2/lib/python2.7/site-packages
+
+y jemalloc as malloc support
+n Google Cloud Platform
+n Hadoop File System support
+y XLA JIT support
+
+n VERBS support!!!!!!
+n OpenCL support
+y CUDA support
+
+CUDA SDK version: 8.0
+CUDA 8.0 toolkit is installed /usr/local/cuda-8.0
+
+cuDNN 6.0
+cuDNN 6 library is installed: /usr/local/cuda-8.0
+
+Please note that each additional compute capability significantly increases your build time and binary size. [Default is: 5.0]
+
+clang as CUDA compiler? [y/N]: n
+nvcc will be used as CUDA compiler
+gcc should be used by nvcc as the host compiler. [Default is /usr/bin/gcc]
+MPI support? [y/N]: n
+
+flags to use during compilation when bazel option "--config=opt" is specified [Default is -march=native]:
+
+
+###########BUILD WITH:
+bazel build -c opt --copt=-mavx --copt=-mavx2 --copt=-mfma --copt=-mfpmath=both --copt=-msse4.2 --config=cuda //tensorflow/tools/pip_package:build_pip_package
+
+Built gone to:
+cd /home/op/Desktop/tensorflow/bazel-bin
+
+sudo ./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+
+cd /tmp/tensorflow_pkg
+sudo pip install tensorflow-1.3.0rc1-cp27-none-linux_x86_64.whl
+
+
+#python sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+
+
+
+http://blog.prabeeshk.com/blog/2014/10/31/install-apache-spark-on-ubuntu-14-dot-04/
+http://www.scala-lang.org/files/archive/scala-2.11.11.tgz

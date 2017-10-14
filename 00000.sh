@@ -5,3 +5,5 @@
 ./00A01_git.sh
 ./00A02_r.sh
 ./00A03_nvidia_pre.sh
+
+reboot now

@@ -9,7 +9,7 @@ sdate(){
 edate(){
 	ESTR="End Time:"
 	EDATE=$(date)
-  echo $SSTR
+  	echo $SSTR
 	echo $SDATE
 	echo $ESTR
 	echo $EDATE
@@ -21,6 +21,6 @@ edate(){
 ./00A02_r.sh
 ./00A03_nvidia_pre.sh
 
-edate()
+edate
 
 reboot now
